@@ -27,8 +27,17 @@ var watcher = new AzureSBQueueWatcher({
   queueName: 'hello'
 });
 
-watcher.on('message', console.log);
+watcher.start();
+
+watcher.on('message', newMessage);
 watcher.on('error', console.error);
+
+function newMessage(message, done) {
+  console.log(message);
+  
+  // fake async processing
+  setTimeout(done, 200);
+}
 ```
 
 ## API
