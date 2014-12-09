@@ -1,0 +1,25 @@
+{
+  "name": "azure-sb-queue-watcher",
+  "version": "1.0.0",
+  "description": "Job worker around Azure Service Bus Queues",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**.js | tap-spec"
+  },
+  "author": "Vincent Voyer <vincent@zeroload.net>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vvo/azure-sb-queue-watcher.git"
+  },
+  "devDependencies": {
+    "azure": "^0.10.2",
+    "tap-spec": "^2.1.1",
+    "tape": "^3.0.3"
+  },
+  "dependencies": {
+    "debug": "^2.1.0",
+    "promise": "^6.0.1",
+    "queue": "^3.0.10"
+  }
+}
