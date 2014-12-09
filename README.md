@@ -49,7 +49,7 @@ var serviceBusService = azure.createServiceBusService();
 `opts.concurrency` is the number of messages you want to get from the queue at once. It defaults
 to `1`. It all depends on how much messages you can deal with given you CPU power.
 
-`opts.timeout` is the message processing timeout (in ms). After this timeout, the message is released to be consumed by others.
+`opts.timeout` is the message processing timeout (in ms). After this timeout, the message is released to be consumed by others. Defaults to 30s.
 
 ### watcher.start()
 
