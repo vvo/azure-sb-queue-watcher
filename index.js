@@ -32,6 +32,8 @@ function AzureSBQueueWatcher(opts) {
   }
 
   this._queueName = opts.queueName;
+  this._concurrency = opts.concurrency;
+
   this._serviceBus = opts.serviceBus;
   this._queue = queue({
     concurrency: opts.concurrency,
@@ -54,7 +56,11 @@ AzureSBQueueWatcher.prototype._startLoop = function() {
   debug('Start');
 
   this._queue.start();
-  this._getAMessage();
+  var concurrency = this._concurrency;
+
+  while (concurrency--) {
+    this._getAMessage();
+  }
 
   this._queue.on('success', this._jobDone.bind(this));
   this._queue.on('error', this._onError.bind(this));
@@ -90,10 +96,6 @@ AzureSBQueueWatcher.prototype._checkQueueExists = function() {
 
 AzureSBQueueWatcher.prototype._jobDone = function(result, job) {
   debug('Job done: %j', job.message);
-  if (this._queue.length < this._queue.concurrency) {
-    debug('Waiting for more jobs to finish');
-    return;
-  }
 
   this._getAMessage();
 };
