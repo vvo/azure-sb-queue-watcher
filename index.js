@@ -175,6 +175,7 @@ AzureSBQueueWatcher.prototype._onJobProcessingTimeout = function(nextJob, failed
 
   this._serviceBus.unlockMessage(failedJob.message, noop);
 
+  this._getAMessage();
   nextJob();
 };
 
