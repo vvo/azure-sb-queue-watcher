@@ -1,6 +1,6 @@
 {
   "name": "azure-sb-queue-watcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Job worker around Azure Service Bus Queues",
   "main": "index.js",
   "scripts": {
